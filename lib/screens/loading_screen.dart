@@ -1,3 +1,4 @@
+import 'package:clima/services/location.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -7,31 +8,36 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  Position _currentPosition;
-  getLocation() async {
-     Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
-     setState(() {
-       _currentPosition=position;
-     });
+  double longtitude;
+  double latitude;
+
+    void getLocation() async{
+    Location location = Location();
+    await location.getLocation();
+    setState(() {
+      longtitude = location.longtitude;
+      latitude = location.latitude;
+    });
   }
+
+  @override
+  void initState() {
+    super.initState();
+    getLocation();
+  }
+
+
   @override
   Widget build(BuildContext context) {
+     double a=10;
+    print("Iam in build");
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [RaisedButton(
-            onPressed: (){
-              getLocation();
-            },
-            child: Text(
-              "Get location",
-            ),
-          ),
-          if(_currentPosition!=null)
-          Text("lat: ${_currentPosition.latitude} , long: ${_currentPosition.longitude}")
-          ],
-        ),
-      ),
+        body: Text("long: ${longtitude}  lat: ${latitude}"),
     );
+  }
+  @override
+  void deactivate() {
+    super.deactivate();
+    print("Iam in deactivate");
   }
 }
