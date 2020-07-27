@@ -24,7 +24,6 @@ class _LocationScreenState extends State<LocationScreen> {
     // TODO: implement initState
     super.initState();
     getData(widget.weatherDetails);
-    print("initStaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaate");
 
   }
 

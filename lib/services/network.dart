@@ -19,7 +19,6 @@ class NetworkAPI {
     try {
       final result = await InternetAddress.lookup('google.com');
       if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-        print('connected');
         response = await http.get(url);
         if (response.statusCode == 200) {
           _data = jsonDecode(response.body);
@@ -32,14 +31,11 @@ class NetworkAPI {
           print(_temp - 273.15);
           return _data;
         } else {
-          print("sorry");
         }
       }
     } on SocketException catch (_) {
-      print('not connected');
     }
 
-    print("network ba3d");
   }
 
   get temp => _temp;

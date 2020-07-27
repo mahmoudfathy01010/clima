@@ -6,17 +6,14 @@ class Location{
 
   getLocation() async {
     try {
-      print("getLocation b");
       if(await Geolocator().isLocationServiceEnabled()) {
         Position position = await Geolocator().getCurrentPosition(
             desiredAccuracy: LocationAccuracy.best);
-        print("getLocation a");
 
         longtitude = position.longitude;
         latitude = position.latitude;
       }
 
-      print("el3ab B3ed");
     }
     catch(e){
       print("error: $e");

@@ -16,15 +16,12 @@ class WeatherModel {
   }
 
   Future getLocationAndData() async {
-    print("getLocationData: Location");
     Location location = Location();
     await location.getLocation();
-    print("getLocationData: Location");
 
     NetworkAPI networkAPI = NetworkAPI(
         "${URL}lat=${location.latitude}&lon=${location.longtitude}&appid=$KApiKey&units=metric");
     var weatherData = await networkAPI.getData();
-    print("getLocationData: Network");
     return weatherData;
   }
 

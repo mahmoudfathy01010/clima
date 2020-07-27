@@ -34,7 +34,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     double a = 10;
-    print("Iam in build");
     return Scaffold(
       body: Center(
         child:SpinKitDoubleBounce(
@@ -46,9 +45,4 @@ class _LoadingScreenState extends State<LoadingScreen> {
     );
   }
 
-  @override
-  void deactivate() {
-    super.deactivate();
-    print("Iam in deactivate");
-  }
 }
